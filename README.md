@@ -8,7 +8,6 @@ This project is part of my journey as an AI Engineering student, blending techni
 ## ✨ What’s Inside?
 - 📂 **src/** → Core Lua implementations (arrays, stacks, queues, linked lists, trees, etc.)
 - 📂 **examples/** → Demo scripts to test and showcase each structure
-- 📂 **tests/** → Validation routines using [Busted](https://olivinelabs.com/busted/) or custom checks
 - 📂 **docs/** → Notes, explanations, and learning resources
 
 ---
