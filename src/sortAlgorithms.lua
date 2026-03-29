@@ -89,6 +89,44 @@ local function mergeSort(table, start, last)
     ]]--
 end
 
+-- Partition for pivot in QuickSort
+local function partition(table, start, last)
+    local pivot = table[last] -- We took the last element as the pivot
+    local i = start - 1 -- This is a wall for smaller numbers
+
+    for j=start, last-1 do
+        if table[j] <= pivot then
+            -- We found a smaller number
+            i = i+1
+            local swapToTarget = table[i]
+            table[i] = table[j]
+            table[j] = swapToTarget
+        end
+    end
+
+    local finalSpot = i + 1
+    local temp = table[finalSpot]
+    table[finalSpot] = table[last]
+    table[last] = temp
+
+    return finalSpot
+end
+-- QuickSort algorithm
+local function quickSort(table, start, last)
+    -- Default vaules for the first iteration
+    if start==nil then start=1 end
+    if last==nil then last=#table end
+
+    -- We set a condition where if the array to sort has a size of 0 or 1 elements it is alr sorted
+    if start<last then
+        local positionPivot = partition(table, start, last)
+
+        quickSort(table, start, positionPivot-1)
+
+        quickSort(table, positionPivot+1, last)
+    end
+end
+
 local test = {100,90,80,70,60,50,40,30,20,10,1}
 
 io.write("[")
@@ -97,7 +135,7 @@ for i=1, #test do
 end
 print("]")
 
-mergeSort(test)
+quickSort(test)
 
 io.write("[")
 for i=1, #test do
