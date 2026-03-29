@@ -1,3 +1,17 @@
+-- Function that sorts from smallest to biggest numbers in the table
+local function orderTableNumbers(table, long)
+    local helper = 0
+    for i=1, long do
+        for j=i, long do
+            if table[i]>table[j] then
+                help = table[i]
+                table[i] = table[j]
+                table[j] = help
+            end
+        end
+    end
+end
+
 -- Insertion Sort Algorithm
 local function insertionSort(table)
     for i=2, #table do
@@ -126,19 +140,3 @@ local function quickSort(table, start, last)
         quickSort(table, positionPivot+1, last)
     end
 end
-
-local test = {100,90,80,70,60,50,40,30,20,10,1}
-
-io.write("[")
-for i=1, #test do
-    io.write(test[i]..",")
-end
-print("]")
-
-quickSort(test)
-
-io.write("[")
-for i=1, #test do
-    io.write(test[i]..",")
-end
-print("]")
